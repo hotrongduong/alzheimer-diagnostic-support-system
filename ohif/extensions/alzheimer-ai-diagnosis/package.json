@@ -1,0 +1,31 @@
+{
+    "name": "@ohif/extension-alzheimer-ai-diagnosis",
+    "version": "1.0.0",
+    "description": "Alzheimer's Prediction Extension for OHIF Viewer.",
+    "main": "dist/index.umd.js",
+    "module": "src/index.ts",
+    "keywords": [
+        "ohif-extension"
+    ],
+    "engines": {
+        "node": ">=14"
+    },
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "dev": "cross-env NODE_ENV=development webpack --config .webpack/webpack.dev.js --watch",
+        "build": "cross-env NODE_ENV=production webpack --config .webpack/webpack.prod.js",
+        "clean": "shx rm -rf dist",
+        "start": "yarn run dev"
+    },
+    "peerDependencies": {
+        "@ohif/core": "^3.0.0",
+        "@ohif/ui": "^3.0.0",
+        "prop-types": "^15.6.2",
+        "react": "^18.2.0"
+    },
+    "dependencies": {
+        "@babel/runtime": "^7.20.13"
+    }
+}
