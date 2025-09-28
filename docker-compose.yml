@@ -1,0 +1,85 @@
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: redis_broker
+    networks:
+      - pacs
+
+  db:
+    image: postgres:15
+    container_name: postgres_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - ./.env
+    networks:
+      - pacs
+
+  pacs:
+    container_name: orthanc
+    image: jodogne/orthanc-plugins
+    ports:
+      - "8042:8042"
+      - "4242:4242"
+    volumes:
+      - ./orthanc.json:/etc/orthanc/orthanc.json:ro
+      - orthanc_db:/var/lib/orthanc/db/
+    restart: always
+    networks:
+      - pacs
+
+  web:
+    build: .
+    container_name: django_web
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./src:/app
+      - media_volume:/app/mediafiles
+      - ./models:/models
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./.env
+    depends_on:
+      - db
+      - pacs
+      - redis
+    networks:
+      - pacs
+
+  worker:
+    build: .
+    container_name: celery_worker
+    command: celery -A config worker -l info
+    volumes:
+      - ./src:/app
+      - media_volume:/app/mediafiles
+      - ./models:/models
+    env_file:
+      - ./.env
+    depends_on:
+      - web
+      - redis
+    networks:
+      - pacs
+
+  ohif-viewer:
+    build:
+      context: ./ohif
+      dockerfile: Dockerfile.ohif
+    container_name: ohif_viewer
+    ports:
+      - "3000:80"
+    depends_on:
+      - pacs
+    networks:
+      - pacs
+
+networks:
+  pacs:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  orthanc_db:
+  media_volume: {}
