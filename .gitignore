@@ -1,24 +1,15 @@
-# ====================================
-# BỎ TOÀN BỘ OHIF MẶC ĐỊNH
-# ====================================
 ohif/*
-
-# Giữ lại các file/thư mục cần push
-!ohif/extensions/ohif-alzheimer-prediction/
-!ohif/modes/longitudinal/
-!ohif/modes/segmentation/
+!ohif/extensions/ohif-alzheimer-prediction/**
+!ohif/modes/longitudinal/**
+!ohif/modes/segmentation/**
 !ohif/platform/app/public/config/orthanc.js
 !ohif/platform/app/pluginConfig.json
 !ohif/nginx.conf
 
-# ====================================
-# BỎ QUA THƯ MỤC MODELS
-# ====================================
+# Bỏ thư mục models
 models/
 
-# ====================================
-# BỎ FILE RÁC, MÔI TRƯỜNG ẢO, CSDL
-# ====================================
+# Bỏ file rác, môi trường ảo, CSDL
 venv/
 .env
 *.sqlite3
