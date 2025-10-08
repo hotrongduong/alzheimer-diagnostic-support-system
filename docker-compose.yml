@@ -40,6 +40,8 @@ services:
       - "8000:8000"
     env_file:
       - ./.env
+    environment:
+      - MEDIA_ROOT=/app/mediafiles
     depends_on:
       - db
       - pacs
@@ -57,6 +59,8 @@ services:
       - ./models:/models
     env_file:
       - ./.env
+    environment:
+      - MEDIA_ROOT=/app/mediafiles
     depends_on:
       - web
       - redis

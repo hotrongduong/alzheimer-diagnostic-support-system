@@ -1,10 +1,48 @@
+# ====================================
+# BỎ TOÀN BỘ OHIF MẶC ĐỊNH
+# ====================================
+ohif/*
+
+# ====================================
+# GIỮ LẠI CÁC THƯ MỤC/FILE CẦN PUSH
+# ====================================
+
+# Extensions
+!ohif/extensions/
+ohif/extensions/*        # bỏ hết bên trong
+!ohif/extensions/ohif-alzheimer-prediction/
+
+# Modes
+!ohif/modes/
+ohif/modes/*             # bỏ hết bên trong
+!ohif/modes/longitudinal/
+!ohif/modes/segmentation/
+
+# App config files
+!ohif/platform/
+!ohif/platform/app/
+!ohif/platform/app/public/
+!ohif/platform/app/public/config/
+!ohif/platform/app/public/config/orthanc.js
+!ohif/platform/app/pluginConfig.json
+
+# Nginx config
+!ohif/nginx.conf
+
+# ====================================
+# GIỮ LẠI THƯ MỤC MODELS
+# ====================================
+!models/
+
+# ====================================
+# BỎ FILE RÁC, MÔI TRƯỜNG ẢO, CSDL
+# ====================================
 venv/
 .env
-
 *.sqlite3
 db.sqlite3
-
 __pycache__/
 *.pyc
-
-/models/
+node_modules/
+dist/
+build/

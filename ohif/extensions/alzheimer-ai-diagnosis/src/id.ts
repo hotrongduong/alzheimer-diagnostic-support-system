@@ -1,1 +1,0 @@
-export const id = '@ohif/extension-alzheimer-ai-diagnosis';
