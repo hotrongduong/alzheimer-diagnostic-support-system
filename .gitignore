@@ -3,34 +3,16 @@
 # ====================================
 ohif/*
 
-# ====================================
-# GIỮ LẠI CÁC THƯ MỤC/FILE CẦN PUSH
-# ====================================
-
-# Extensions
-!ohif/extensions/
-ohif/extensions/*        # bỏ hết bên trong
+# Giữ lại các file/thư mục cần push
 !ohif/extensions/ohif-alzheimer-prediction/
-
-# Modes
-!ohif/modes/
-ohif/modes/*             # bỏ hết bên trong
 !ohif/modes/longitudinal/
 !ohif/modes/segmentation/
-
-# App config files
-!ohif/platform/
-!ohif/platform/app/
-!ohif/platform/app/public/
-!ohif/platform/app/public/config/
 !ohif/platform/app/public/config/orthanc.js
 !ohif/platform/app/pluginConfig.json
-
-# Nginx config
 !ohif/nginx.conf
 
 # ====================================
-# GIỮ LẠI THƯ MỤC MODELS
+# BỎ QUA THƯ MỤC MODELS
 # ====================================
 models/
 
