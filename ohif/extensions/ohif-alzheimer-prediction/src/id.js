@@ -1,0 +1,1 @@
+export default '@ohif/extension-alzheimer-prediction';
